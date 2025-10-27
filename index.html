@@ -2,13 +2,13 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>بطاقات رسائل (8 في الصفحة - أزهار - خط Traditional Arabic)</title>
+    <title>بطاقات رسائل (8 في الصفحة - النسخة المصححة)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif; /* استخدام Amiri Quran كبديل أول مضمون */
+            font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif;
             margin: 0;
             background-color: #f0f0f0;
         }
@@ -26,7 +26,7 @@
             gap: 0; /* إزالة الفراغات بين البطاقات */
         }
         .card {
-            font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif; /* تطبيق الخط على البطاقة */
+            font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif;
             border: none;
             padding: 0.5cm; /* هامش داخلي للنص */
             box-sizing: border-box;
@@ -34,33 +34,38 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-size: 12pt; /* زيادة حجم الخط قليلاً */
-            line-height: 1.8; /* زيادة تباعد الأسطر لراحة القراءة */
+            font-size: 12pt;
+            line-height: 1.8;
             overflow-wrap: break-word;
-            position: relative; /* مهم لتموضع الخلفية والنص */
-            z-index: 1; /* لجعل البطاقة فوق الخلفية الافتراضية */
-        }
-
-        /* استخدام ::before لوضع الخلفية بشفافية دون التأثير على النص */
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/White_flowers.jpg/1280px-White_flowers.jpg'); /* رابط صورة أزهار بيضاء */
+            position: relative;
+            
+            /* --- 
+               تصحيح الخلفية:
+               نحن نستخدم طبقتين للخلفية: 
+               1. طبقة لون أبيض شفافة (90% شفافية) لتغطية الصورة.
+               2. صورة الأزهار نفسها.
+               هذا يجعل الخلفية باهتة جداً دون لمس شفافية النص.
+            --- */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), /* الطبقة العلوية: أبيض شفاف */
+                url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/White_flowers.jpg/1280px-White_flowers.jpg'); /* الطبقة السفلية: صورة الأزهار */
+            
             background-size: cover;
             background-position: center;
-            opacity: 0.1; /* شفافية الخلفية فقط (10%) - يمكنك تعديلها (0.05-0.2) */
-            z-index: -1; /* لجعلها خلف النص */
         }
+
+        /* --- 
+           تصحيح الخطوط الفاصلة (مع مراعاة RTL): 
+           نستهدف العمود الأيسر (العناصر الزوجية 2n) ونضيف خطاً على يساره.
+        --- */
         
-        /* الخطوط الفاصلة الداخلية */
-        .page .card:nth-child(2n+1) {
-            border-right: 1px solid #aaa;
+        /* الخط العمودي الفاصل (في المنتصف) */
+        .page .card:nth-child(2n) {
+            border-left: 1px solid #aaa;
         }
-        .page .card:nth-child(n+1):nth-child(-n+6) {
+
+        /* الخطوط الأفقية (للصفوف 1 و 2 و 3) */
+        .page .card:nth-child(-n+6) {
              border-bottom: 1px solid #aaa;
         }
 
@@ -77,19 +82,16 @@
             }
             .card {
                 border: none;
-                -webkit-print-color-adjust: exact; /* لضمان طباعة الخلفية والألوان */
+                /* إجبار المتصفح على طباعة الخلفيات */
+                -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact;
             }
-            .card::before {
-                opacity: 0.1; /* شفافية الخلفية عند الطباعة */
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+            
             /* إعادة تطبيق الخطوط الفاصلة للطباعة */
-            .page .card:nth-child(2n+1) {
-                border-right: 1px solid #ccc;
+            .page .card:nth-child(2n) {
+                border-left: 1px solid #ccc;
             }
-            .page .card:nth-child(n+1):nth-child(-n+6) {
+            .page .card:nth-child(-n+6) {
                  border-bottom: 1px solid #ccc;
             }
         }
@@ -140,7 +142,7 @@
         <div class="card">33. أنتِ في الطريق الصحيح فلا تهتمي بما تعانين من الصعاب. شعاركِ إرضاء الله، وداومي على "لا إله إلا أنت سبحانك إني كنت من الظالمين"، فلها سر عجيب في كشف الكرب ورفع المحن. وابشري بقدوم من تنتظرين إن شاء الله.</div>
         <div class="card">34. السكينة والوقار من صفاتكِ، وحب الله غايتكِ، ودموع في جوف الليل تنجيكِ من ذنوبكِ. فاختاري الجليس الصالح المتفائل يهوّن عليكِ الصعاب ويفتح لكِ باب الرجاء. وعليكِ بقراءة القرآن وتدبره حتى ييسر الله أموركِ وتنالين ما تتمنينه.</div>
         <div class="card">35. أنتِ امرأة صالحة يتلألأ من وجهكِ نور الطهارة، فحافظي على صلاتكِ تزيدكِ نوراً على نور. وابتسمي فالخير قادم إليكِ. ورغّبي من حولكِ بطاعة الله وحب رسول الله وحب المسلمين. ولا تيأسي، فالمسلم لا يقنط ولا يستسلم.</div>
-        <div class="card">36. أنتِ مؤمنة يفخر بكِ الوالدان ويعتزون بكِ. أنتِ تربية صالحة. إذا أردتِ أن تسعدي مع الناس فعامليهم بما تحبين أن يعاملوكِ به. واعلمي أن النجاح أن يرضى الله عنكِ، وأن تكوني نفسكِ راضية، وأن يرضى عنكِ من حولكِ، وأن تقدمي عملاً مثمراً.</div>
+        <div class="card">36. أنتِ مؤمنة يفخر بكِ الوالدان ويعتزون بكِ. أنتِ تربية صالحة. إذا أردتِ أن تسعدي مع الناس فعامليهم بما تحبين أن يعاملوكِ به. واعلمي أن النجاح أن يرضى الله عنكِ، وأن تكوني نفسكِ راضية، وأن يرضى عنكِ من حولكِ، وأن تقدمي عملاً مثماً.</div>
         <div class="card">37. أنتِ نور منزلكِ وريحانة حيكِ، يقصدكِ الجميع ليجدوا فيكِ مبتغاهم. فافتحي قلبكِ للجميع تنالي رضا الله. واعلمي أن أفضل الناس أنفعهم للناس، واحتسبي أجركِ من الله، وأكثري من قول لا إله إلا الله.</div>
         <div class="card">38. وهبكِ الله جمال النفس وجعلكِ فأل خير على أسرتكِ. أقدمي على فعل الخير واعلمي أن الله يحب التوابين ويحب المستغفرين. وتقرّبي من الصالحين، وارضي بما قسمه الله لكِ تنعمي بخير الدنيا والآخرة.</div>
         <div class="card">39. إن بعد العسر يسراً، والصبر مفتاح الفرج، فاضحكي تضحك لكِ الدنيا. واعلمي أنكِ محبوبة من الجميع، وتواضعكِ تاج فوق رأسكِ. فلا تهتمي بكلام الناس وغيبتهم، واكسبي قلوب الناس بحسن الخلق.</div>
@@ -178,4 +180,3 @@
     </div>
 </body>
 </html>
- 
