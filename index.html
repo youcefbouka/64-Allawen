@@ -2,7 +2,7 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>بطاقات رسائل (8 في الصفحة - النسخة النهائية المصححة)</title>
+    <title>بطاقات رسائل (8 في الصفحة - بدون خلفية)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
@@ -10,20 +10,20 @@
         body {
             font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* خلفية خفيفة للجسم عند العرض في المتصفح */
         }
         .page {
             width: 21cm;
             min-height: 29.7cm;
             padding: 0.5cm; /* هامش الصفحة الخارجي */
             margin: 1cm auto;
-            background-color: white;
+            background-color: white; /* خلفية بيضاء للصفحة */
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             box-sizing: border-box;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(4, 1fr);
-            gap: 0; /* لا توجد فواصل */
+            gap: 0; /* لا توجد فواصل بين البطاقات */
         }
         .card {
             font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif;
@@ -37,46 +37,17 @@
             font-size: 12pt;
             line-height: 1.8;
             overflow-wrap: break-word;
-            
-            /* إعدادات ضرورية لطبقات الخلفية والنص */
-            position: relative;
-            z-index: 1;
-            overflow: hidden; /* يضمن عدم خروج الخلفية المدورة عن الإطار */
+            position: relative; /* للحفاظ على تنسيق النص إذا كان هناك أي z-index */
+            z-index: 1; 
+            background-color: transparent; /* التأكد من أن الخلفية شفافة للبطاقة نفسها */
         }
 
-        /* هذا هو العنصر الزائف الذي يحتوي على الخلفية فقط.
-           هذا يسمح لنا بتدوير الخلفية دون تدوير النص.
-        */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            
-            /* رابط الصورة الخام (الصحيح) من GitHub */
-            background-image: url('https://raw.githubusercontent.com/youcefbouka/64-Allawen/f85e9581ee7332c52adde6964c1cf95edd01196e/pngtree-green-white-simple-page-border-picture-image_13244960.jpg');
-            
-            background-size: cover;
-            background-position: center;
-            
-            /* تدوير الخلفية 90 درجة */
-            transform: rotate(90deg);
-            
-            opacity: 1; /* شفافية كاملة (لا يوجد تعتيم) */
-            z-index: -1; /* وضعها خلف النص */
-        }
-        
-        /* هذا العنصر يغلف النص لضمان بقائه فوق الخلفية */
-        .card-content {
-             position: relative;
-             z-index: 2; /* التأكد من أن النص فوق كل شيء */
-        }
+        /* تم إزالة العنصر الزائف ::before بالكامل لأنه كان يستخدم للخلفية */
+        /* وتم إزالة جميع أكواد الخلفية */
 
         @media print {
             body {
-                background-color: white;
+                background-color: white; /* خلفية بيضاء عند الطباعة */
                 margin: 0;
             }
             .page {
@@ -86,13 +57,7 @@
                 page-break-after: always;
             }
             .card {
-                /* إجبار المتصفح على طباعة الخلفيات */
-                /*!! تذكر تفعيل خيار "رسومات الخلفية" في إعدادات الطباعة !!*/
-                -webkit-print-color-adjust: exact !important; 
-                print-color-adjust: exact !important;
-            }
-            .card::before {
-                 /* إجبار طباعة العنصر الزائف (الخلفية) */
+                /* لم تعد هناك خلفيات لطباعتها، لذا هذه الخصائص ليست ضرورية ولكن أبقيتها للحفاظ على التناسق */
                 -webkit-print-color-adjust: exact !important; 
                 print-color-adjust: exact !important;
             }
