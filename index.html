@@ -2,7 +2,7 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>بطاقات رسائل (8 صفحات A4 - خلفية الصورة المخصصة)</title>
+    <title>بطاقات رسائل (8 صفحات A4 - خلفية الصورة الكاملة)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@
             line-height: 1.7;
             position: relative;
             z-index: 1;
-            background-color: #ffffff;
+            background-color: transparent;
             border-radius: 8px;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
@@ -89,16 +89,14 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.15;
+            opacity: 1;
             z-index: -1;
-            filter: grayscale(30%) sepia(20%);
         }
 
         .card-content {
             position: relative;
             z-index: 2;
             color: #2c3e50;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
             padding: 10px;
         }
         
@@ -120,19 +118,6 @@
         
         .print-btn:hover {
             background: #6d5c47;
-        }
-
-        /* تأثيرات إضافية للبطاقات */
-        .card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
-            z-index: -1;
-            border-radius: 8px;
         }
     </style>
 </head>
@@ -235,4 +220,4 @@
         <div class="card"><div class="card-content">64. أنتِ ذات همة عالية، لا ترضين بالقليل في أمور دينكِ ودنياكِ. تسعين دائماً للأفضل وتبذلين جهدكِ للوصول إليه. استمري في هذه الهمة، واستعيني بالله ولا تعجزي، فإن المستقبل لمن يعمل بجد وإخلاص.</div></div>
     </div>
 </body>
-    </html> 
+</html>
