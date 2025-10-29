@@ -2,7 +2,7 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>بطاقات رسائل (8 صفحات A4 - خلفية أزهار رمادية)</title>
+    <title>بطاقات رسائل (8 صفحات A4 - خلفية الصورة المخصصة)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@
 
         .card {
             font-family: 'Amiri Quran', 'Traditional Arabic', 'Times New Roman', serif;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #d4af37;
             padding: 0.7cm;
             box-sizing: border-box;
             display: flex;
@@ -70,13 +70,14 @@
             position: relative;
             z-index: 1;
             background-color: #ffffff;
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        /* خلفية الأزهار الرمادية */
+        /* خلفية الصورة المخصصة */
         .card::before {
             content: "";
             position: absolute;
@@ -84,23 +85,28 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23e0e0e0' stroke-width='0.7' opacity='0.4'%3E%3Cpath d='M40,25 C45,20 50,22 55,25 C60,28 62,33 58,38 C54,43 48,45 43,42 C38,39 35,33 38,28 C41,23 36,25 40,25 Z'/%3E%3Cpath d='M80,15 C85,10 90,12 95,15 C100,18 102,23 98,28 C94,33 88,35 83,32 C78,29 75,23 78,18 C81,13 76,15 80,15 Z'/%3E%3Cpath d='M25,70 C30,65 35,67 40,70 C45,73 47,78 43,83 C39,88 33,90 28,87 C23,84 20,78 23,73 C26,68 21,70 25,70 Z'/%3E%3Cpath d='M85,60 C90,55 95,57 100,60 C105,63 107,68 103,73 C99,78 93,80 88,77 C83,74 80,68 83,63 C86,58 81,60 85,60 Z'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: 120px 120px;
-            background-repeat: repeat;
-            opacity: 0.5;
+            background-image: url('https://raw.githubusercontent.com/youcefbouka/64-Allawen/main/IMG_20251029_083402.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
             z-index: -1;
+            filter: grayscale(30%) sepia(20%);
         }
 
         .card-content {
             position: relative;
             z-index: 2;
+            color: #2c3e50;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+            padding: 10px;
         }
         
         .print-btn {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: #5a6268;
+            background: #8b7355;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -109,10 +115,24 @@
             font-family: Arial, sans-serif;
             font-size: 16px;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         .print-btn:hover {
-            background: #495057;
+            background: #6d5c47;
+        }
+
+        /* تأثيرات إضافية للبطاقات */
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            z-index: -1;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -215,4 +235,4 @@
         <div class="card"><div class="card-content">64. أنتِ ذات همة عالية، لا ترضين بالقليل في أمور دينكِ ودنياكِ. تسعين دائماً للأفضل وتبذلين جهدكِ للوصول إليه. استمري في هذه الهمة، واستعيني بالله ولا تعجزي، فإن المستقبل لمن يعمل بجد وإخلاص.</div></div>
     </div>
 </body>
-                              </html>
+    </html> 
